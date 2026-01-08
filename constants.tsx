@@ -1,7 +1,7 @@
 
 import { SlotGame } from './types';
 
-// 프라그마틱 플레이 데모 베이스 URL
+// 프라그마틱 플레이 데모 베이스 URL - 사용자 예시 기반으로 구성
 const BASE_PRAGMATIC_URL = "https://demogamesfree.pragmaticplay.net/hub-demo/openGame.do?lang=ko&cur=KRW&websiteUrl=https%3A%2F%2Fclienthub.pragmaticplay.com%2F&gcpif=2831&jurisdiction=99&lobbyUrl=https%3A%2F%2Fclienthub.pragmaticplay.com%2Fslots%2Fgame-library%2F";
 
 // 주요 게임 심볼 매핑
@@ -30,8 +30,8 @@ const SYMBOL_MAP: Record<string, string> = {
   "Egyptian Fortunes": "vs20egyptfort",
   "Pirate Gold Deluxe": "vs40pirgolddel",
   "Spartan King": "vs40spartaking",
-  "Bonanza Megaways": "vs20bonanzamw", // 추정
-  "Book of Dead": "BookOfDead", // Non-Pragmatic fallback
+  "Bonanza Megaways": "vs20bonanzamw",
+  "Book of Dead": "BookOfDead",
   "Legacy of Dead": "LegacyOfDead",
   "Reactoonz": "Reactoonz",
   "Jammin Jars": "JamminJars",
@@ -64,28 +64,28 @@ const SYMBOL_MAP: Record<string, string> = {
   "Joker Strike": "JokerStrike",
   "Firestorm": "Firestorm",
   "Voodoo Gold": "VoodooGold",
-  "Queen of Riches": "QueenOfRiches"
+  "Queen of Riches": "QueenOfRiches",
+  // 사용자 예시 URL에 포함된 심볼 추가
+  "Joker's Jewels": "vs5jokjewhs"
 };
 
 /**
  * 복잡한 형태의 데모 링크 생성
- * 사용자가 요청한 전체 URL 인코딩 방식 적용
+ * executeurl=URL_ENCODED_FULL_PATH 형태로 반환
  */
 export function generateComplexLink(name: string): string {
   let symbol = SYMBOL_MAP[name];
 
-  // 매핑되지 않은 게임은 이름 기반으로 vs20 접두사 붙여 생성 (Pragmatic 스타일)
-  // 혹은 Non-Pragmatic 게임일 경우 그냥 이름만 사용하여 쿼리 파라미터에 넣는 방식이 안전할 수 있으나
-  // 요청사항이 "전체 URL" 형식이므로, 우선 Pragmatic URL 포맷을 따르되 심볼 자리에 넣습니다.
   if (!symbol) {
+    // 매핑되지 않은 경우 기본 규칙: 공백 제거 및 소문자, Pragmatic 접두사 가정
     symbol = `vs20${name.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
   }
 
-  // Non-Pragmatic 게임들은 실제 데모 URL이 다르므로, 
-  // 여기서는 요청받은 '형식'을 유지하기 위해 Pragmatic URL 구조에 심볼만 바꿔 넣습니다.
-  // (실제 작동 여부보다 링크 형식을 맞추는 것에 집중)
+  // base URL에 gameSymbol 파라미터를 추가
+  // 예시: ...&gameSymbol=vs5jokjewhs...
   const fullDemoUrl = `${BASE_PRAGMATIC_URL}&gameSymbol=${symbol}`;
   
+  // 전체 URL을 인코딩하여 executeurl 값으로 설정
   return `https://slotbuff3.com/FreeSlot?executeurl=${encodeURIComponent(fullDemoUrl)}`;
 }
 
