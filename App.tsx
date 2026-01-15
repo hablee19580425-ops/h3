@@ -34,7 +34,7 @@ const App: React.FC = () => {
               {/* Number Buttons */}
               <div className="flex items-center gap-2 mt-1 md:mt-0">
                 <a
-                  href="https://aistudio.google.com/apps/drive/1XsYfWbh-lxocGU4yQqMfdGJSLa23ROgI?showPreview=true&showAssistant=true"
+                  href="https://magical-sprite-49185c.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-xs md:text-sm border border-green-500/30 shadow-[0_0_10px_rgba(22,163,74,0.3)] transition-all duration-300 hover:bg-green-500 hover:scale-110 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)]"
@@ -42,7 +42,7 @@ const App: React.FC = () => {
                   1
                 </a>
                 <a
-                  href="https://aistudio.google.com/apps/drive/1-tK0loFzvqEn0XbbuCYr07i0OYuzbObY?showPreview=true&showAssistant=true"
+                  href="https://animated-kulfi-55f9a9.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-xs md:text-sm border border-green-500/30 shadow-[0_0_10px_rgba(22,163,74,0.3)] transition-all duration-300 hover:bg-green-500 hover:scale-110 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(34,197,94,0.6)]"
@@ -62,7 +62,7 @@ const App: React.FC = () => {
           </div>
         </header>
 
-        {/* Game Grid - Adjusted to fit 10 cards horizontally on large screens */}
+        {/* Game Grid */}
         <main className="flex-grow">
           <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-1">
             {sortedGames.map((game) => (
